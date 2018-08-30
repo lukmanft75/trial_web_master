@@ -1,0 +1,407 @@
+XXX allowances ada field description (CRUD) ,superuser granted only
+
+XXX Job Order
+	XXX di list belum ada link untuk extension
+	XXX Medical : Insurance : 	[-Not Covered-[V]]
+	XXX								oEmploye Only		oCover Family
+	XXX								[ ] Inpatien						ammount [            ]
+	XXX								[ ] Outpatient 	[ ] All In	ammount [            ]
+	XXX								[ ] Dental							ammount [            ]
+	XXX								[ ] Maternity					Normal     [            ]
+	XXX																	Cecar      [				]
+	XXX																	Miscarriage[				]
+	XXX								[ ] Glasses							ammount [            ]
+	XXX	jika All In di centrang, maka dental,maternity dan glasses di disabled
+
+bjps
+	Info Tunggakan
+	XXX ktp => NIK
+	XXX bpjs => No BPJS
+	XXX Basic Salary => diisi dari JO
+	XXX Kesehatan => upload : KTP,KK,Kartu BPJS,Surat Pernyataan
+	XXX Ketenagakerjaan => Upload : KTP, Kartu BPJS, Kartu Jaminan Pensiun
+		XXX KTP => NIK
+		XXX tambah field "Nama Ibu Kandung"
+
+XXX Booking Matrix => hint tambahin description
+
+AllDataUpdate
+	XXX cukup memilih project
+	XXX all_data_update_edit.php => ada tombol delete
+	XXX edit extension di link "tanggal" => "job order extension edit"  =>job_order_extension_edit.php?id=???
+	klik yang baris merah -> "move to terminated" -> tgl dan reason of termination
+	ada baris termination
+		uploader,list,add
+	uploader => cukup memilih project
+	uploader cc ???
+	position bisa multi seperti homebase
+	EDUCATIONAL BACKGROUND => semua harus muncul
+	notifikasi warning akan kirim email ke client dan user chr-dashboard
+
+Devira => GA & Admin
+
+Payroll
+	Time sheet => untuk hitung lemburan => untuk tools calculator
+		FDR -> Rules ????
+
+
+
+billing => data details???
+
+group => bisa lebih detail menunya
+
+Purchasing Requisition 
+	No,Item,ESIRO,RequestBy,Quantity,Price,Total
+		ESIRO => Empty,Stock,Inventory,Replacement,Other
+	di approve oleh GA, untuk di berikan HarSat
+	bisa create PRF, dengan lampiran detail barang
+
+Training
+	lihat email : "Kebutuhan Pengembangan Sistem CHR-Dashboards"
+	Blasting email wysiwyg editor
+	database email
+	jadwal training  (per tahun) => format dari mba winda
+		ada yg sesuai, yg ditunda, di cancel
+		pelaksana oleh indohr atau mitra
+		
+	budget dan realisasi training
+		fee pembicara, mitra
+		hotel
+		snack
+			=> profit
+
+	PRF {ada keterangan sudah dibayarkan} => tool untuk global
+	Pembayaran peserta => ada yg on the spot, ada yang transfer ke finance
+	
+	Flow training:
+		Blasting iklan
+			ada link isi form registrasi
+			ada pilihan harga earlybird dan normal/reguler
+			ada link google maps
+			yang mengisi form registrasi, maka akan menjadi prospek peserta
+		Blasting konfirmasi kehadiran peserta
+			ada link form konfirmasi kehadiran => untuk reguler
+			ada link form konfirmasi pembayaran => untuk earlybird
+				bukti transfer
+			input data untuk invoicing
+		Peserta prospek bisa ubah harga training
+	
+	Nomor Surat Generator
+
+Finanace
+	invoice_view.php & invoice_print.php
+		XXX PO number akan muncul
+		XXX dibawah po number ada wcc no
+		XXX di baris detail muncul IDR/USD
+		XXX di kolom number to say => jika IDR => "#one thousand rupiah#", jika USD =>"#one thousand#"
+		Invoice Coa Default Setting:
+			Dengan Reimbursment
+				Piutang Gaji (D)
+				Piutang Usaha (D)
+				Penjualan (K)
+				Hutang PPN (K)
+					dengan pph23: BDD PPh23(D)
+			
+			Tanpa Reimbursment
+				Piutang Usaha (D)
+				Penjualan (K)
+				Hutang PPN (K)
+					dengan pph23: BDD PPh23(D)
+				
+			Reimbursment Saja
+				Piutang Gaji (D)
+				Penjualan (K)
+			
+			BDD => Biaya Dibayar Dimuka
+
+	data bakal upload:
+		PO 2016 & 2017
+		Invoice 2016 & 1017
+		Address All Client & npwp
+		Format Neraca, L/R => format Audit
+			Neraca Bahasa Inggris
+		Jurnal Harian
+		Budgeting All division
+		commercial nsn (po & wcc)
+		buku besar pembantu?????
+
+Upload document di buat general
+
+Taskbase ditambah menu:
+	BTR (Bussiness Trip)
+	Advance
+
+
+XXX Info terbaru
+	XXX penambahan pkwt 1,2,3 break 1,2,3 break dst
+
+XXX po memiliki multi deskripsi dan multi nominal
+
+XXX invoice memiliki multi deskripsi dan multi nominal
+
+XXX Master project ada field client
+
+XXX lengkapi data projects
+
+job order
+    XXX tax paid by company pindah di samping basic salary
+    XXX dan di kolom setelah value bagian allowance
+    XXX tambahkan field "pkwt ke" dan "thp"
+    tambahkan hint untuk penjelasannya
+    bisa output jadi kontrak
+    job order view di sesuaikan
+
+all data update
+    XXX dapat mengubah nilai allowance di list setiap saat
+	 	XXX joborder extension/amandemen edit
+    XXX project bisa multi seperti homebase
+    XXX main filter by project & client
+    XXX upload all data update by client and project
+    XXX CRUD
+    XXX sesuaikan tampilan all data update full dengan all data updates headers
+    XXX proses uploadernya harap disempurnakan
+    XXX filter candidate name di ubah jadi textbox, supaya kalo banyak candidate ga lambat
+
+    j&j :cc => tidak perlu muncul di all data update, tapi muncul di details untuk billing
+        dari jo isinya
+    TNS :IndoHR / Referral => semua harusnya muncul
+    LENOVO : EDUCATIONAL BACKGROUND => semua harus muncul
+    PROTEL : Remarks
+        remark 1 => kontract notification
+            Active,warning (40 days),expired
+        remark 2 => history joborder
+       
+    sheet Project_SF TIS, kolom Asuransi (AK) => "RI+RJ only employee & BPJS Kes" ???
+        dari JO, option asuransi
+       
+    XXX setelah pkwt zen ada pkwt I dan ada juga pkwt III ??? => ganti jadi break
+
+XXX lengkapi master data allowance sesuai all data updates headers
+
+XXX all data update uploader
+
+
+extension adalah amandemen
+di batalkan saja yang extension, karena sama saja
+
+buat google form untuk training
+
+
+
+XXX Form untuk transaksi harian yang akan diisi oleh Mas Dodi, {bank in/out}
+	XXX akan muncul daftar transaksi yang akan di followup oleh Pak Firman untuk jurnaling
+
+XXX Delete dari jurnal akan menghapus daily transaction
+
+XXX jurnal tambahkan kolom currency
+
+XXX all data updates homebase perubahannya ada historical
+
+XXX bpjs report ada view softcopy
+
+XXX according to file "Commercial Dashboard 31 July 2015 - 10 February 2017.xlsx"
+    Nomor PO dikolom = A
+    Decription di kolom = R
+    Nomor WCC di kolom= M
+    Nilai PO di kolom = B
+
+XXX hilangkan verifikasi untuk invoice dari mba ari ke pak firman
+
+XXX Pemakaian ruang meeting
+	
+payroll jurnal setting "lihat di foto DSC_3036.JPG & DSC_3037.JPG"
+
+XXX invoice_add.php
+	XXX subwindow Purchase Order => kolom outsanding ganti PO Onhand
+	XXX ada kolom reimbursement dan fee
+	XXX total po = reimbursement + fee
+	XXX duedate ganti integer (30 days default)
+	XXX total_po sebelum VAT dan tax23
+	XXX total adalah jumlah total_po + vat + tax23)
+	XXX fee untuk menghitung pph23
+	
+XXX perbaiki invoice uploader sesuai duedate (integer),reimbursement, fee, total_po, vat, tax23, total
+
+XXX multi user privileges
+
+AlldataUpdate uploader
+
+jika ada candidate yg cut off jika di tengah bulan, misal tgl 14, maka jangan sampai gajinya full 1 bulan
+	dipagerin dari sistem agar jangan kebablasan, 
+	sebenarnya sudah ada end contract di awal job order
+
+all data update berdasarkan client,
+	kolom allowance akan muncul atau tidaknya sesuai client yg berkaitan memiliki kolom tersebut atau tidak?
+		fix allowance (setelah basic salary)
+		laptop allowance
+		broadband allowance
+		other allowance
+
+	kolom benefit ganti dengan medical plan
+
+	npwp di candidates di seragamkan formatnya + atas nama, karena istri bisa ikut npwp suaminya
+	 =>49.988.778.4.402.000 a.n Agung Permana
+
+	Join IndoHR At => Join IndoHR Start
+	birthplace => dari data candidate
+
+Candidates status berkaitan dengan family member
+	XXX sub windows bpjs ada kolom remarks, muncul di report
+
+
+REPORT
+	LK -> source dr jurnal
+	Sales -> dr invoice, generate per divisi
+	Outstanding Invoice => invoice yang belum di bayar / sama dengan due date
+	PO Onhand => Po yang belum di invoice
+
+
+
+INVOICE
+	report / divisi akan di munculkan IDR (lihat di dashboard)	
+	tapi bisa melihat USD nya
+	tanggal invoice adalah tanggal entry
+
+kurs info
+	kurs pajak
+	kurs BI
+	kurs actual
+	kurs jual
+
+=================================================================================
+
+
+All Data updates
+	kolom historical
+		perubahan gaji
+		perubahan posisi
+		perubahan benefit
+		XXX perubahan homebase
+
+	XXX kolom homebase lebih dari satu homebase
+		di tick di list nya
+
+XXX report BPJS KES Ketenagakerjaan
+	XXX munculkan hanya yang masih ada kontrak aktif
+
+XXX PPh 23
+	XXX tambahkan kolom tanggal bukti potong,no bukti potong
+
+XXX PPn
+	XXX tambah kolom Storage,VAT No
+
+Invoice
+	XXX hapus Vat No
+	XXX tambah kolom Po No
+
+	XXX po num ketika di entry muncul desc dan nominal
+	XXX hapus kolom amount
+	XXX kolom PO num ada icon search
+		XXX ketika di klik muncul sub window isisnya adalah PO-PO yang sesuai dengan client yg terpilih
+
+	XXX sub_window/win_po.php hanya menampilkan yang masih diatas 0
+		XXX ketika klik load_parent, parent kolom total tidak sesuai nilainya jika parsial
+	XXX ketika sudah add baru, pindah ke view (ready to print)
+	XXX invoice_edit
+	XXX invoice setting jurnal
+	XXX Invoice View & Print 
+		XXX tidak lagi mengambil data dari invoice_detail
+		XXX khusus nokia ada WCC no dan PO no di bagian detail deskripsi
+		XXX sesuaikan dengan yang invoice di foto /home/warih/Documents/AP CHR/invoice_1.jpg, /home/warih/Documents/AP CHR/invoice_2.jpg
+
+XXX perbaiki invoice uploader, karena sudah tidak menggunakan invoice_detail
+	
+XXX Uploader PO	=> 4249
+	detail 	=> 4250
+
+Uploader COA
+
+report data asuransi
+
+PPh 23
+	ketika di entry akan mempengaruhi penyajian report (lihat: INVOICE_2016...xlsx, sheet :master, kolom AD dan AE)
+
+
+
+XXX coa
+XXX jurnal
+
+bank => ??? apakah sekalian menggunakan metode jurnal
+
+	
+
+XXX All data update full view
+	XXX pengambilan tanggal pkwt > satu dan tanggal amandemen masih salah cara ambilnya
+	XXX kolom amandemen dari field "to/end date"
+
+XXX All Data Update Add/Edit/uploader/view
+	XXX ada field tax status dan medical status, mode $f->select
+
+Division 
+	IndoHR TaskBase
+	Indotech
+	CHR Training & Consultant
+	Jalurkerja.com
+
+Finance
+	Purchase Order
+	XXX Wcc
+		XXX attachments(upload File) => no Po,No.WCC,Softcopy Scaned
+	Invoice
+		langsung masuk Cash in [pilih nama bank, no invoice, nominal, date]
+		tambahkan kolom WCC number
+	Budgeting
+	Cost Realization
+		langsung sebagai cash out [pilih nama bank, COA, nominal, date]
+	Bank
+
+File Hardcopy
+	XXX PPH 23
+		bukti potong
+		banyak invoice dalam satu pph23
+		[Client] -> [No Invoice] -> [Nominal PPH 23]  } no invoice bisa di entry banyak
+	XXX PPN
+		[Client] -> [No Invoice] -> [Nominal PPN]  } no invoice hanya satu saja
+	XXX Pajak
+	XXX MOM Indotech
+
+
+jo_order crud 
+	job order view ada tombol-tombol extension ke brapa dan amandemen ke brapa
+	
+	job order view 
+		menampilkan allowance dan benefit yang additional
+		Overtime ada tambah pilihan
+		status kontrak
+		akan menampilkan dengan endorsement yg terakhir	
+
+candidates
+	berikut ini apakah hanya sekali tambah di kolom candidate atau bisa berkali2 entry di child table candidate:
+		tambahkan kolom bpjs_registered_at,bpjs_send_at,bpjs_with_family (log book)
+	 	tambahkan kolom jamsostek_registered_at,jamsostek_send_at (log book)
+		tambahkan kolom insurance_registered_at,insurance_send_at,insurance_with_family (log book)
+	upload photo
+	view comprehensive resume
+	ketika di klik additional bpjs kesehatan, otomatis muncul sub windows dengan daftar family
+			jika family belom di isi, hanya muncul data dia sendiri
+	ketika di klik additional BPJS Ketenagakerjaan, akan muncul sub window yang hanya ada baris data dia sendiri
+	
+
+Uploader
+	XXX All Data Update
+		terbagi menjadi candidates dan all data update
+
+Notifikasi
+	=> 45 hari least day
+	=> insurance belum memiliki ID
+
+
+crud pkwt from all_data_update_edit.php,view,listfull
+curl AP PORTAL
+	https://apportal.nokia.com/APPortalExt/Login.aspx
+	https://apportal.nokia.com/APPortalExt/pos/
+	billings@corphr.com
+	bismillaahi123
+
+multi user privileges
+

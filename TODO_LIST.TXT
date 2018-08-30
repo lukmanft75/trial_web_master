@@ -1,0 +1,354 @@
+
+
+nomor di access => mempengaruhi nomor surat pkwt
+	jika ada "a" nya berarti sudah pkwt ke II
+gaji -> gaji lama
+jika ada perubahan angka, history nya di catet di mana?
+
+
+metode upload all_data_update
+	tidak perlu mencatat ke job order
+		bentuk semacam joborder, yg fungsinya hanya pencatatan untuk cutomize kontrak
+		
+	
+
+testing all data update uploader yang baru
+	truncate table all_data_update;
+	truncate table joborder;
+	truncate table joborder_allowances;
+
+engility dihilangkan yang satunya
+
+VIKA
+	TNS PKWT break kok ada 2??
+	
+	ADU => homebase langsung terpilih sesuai yg diupload
+	
+	all data update , di tandain dulu (merah), trus ada trigger untuk pindah ke bawah
+	
+	bugs => kolom remark warning, tapi kok ga kuning barisnya
+	
+	bugs => upload all data update, nambah terus datanya, bukan overwrite (ahmad bari , sheet:TIS)
+	
+	candidate list, filter bisa per bulan untuk "join indohr at"
+	
+	Job order => baris overtime, pilih fixrate => muncul textbox untuk isi nilainya dan muncul pilihan "tax paid by comp (yes/no)"
+		kalo pilihan "Follow depnaker" samain aja kaya fixrate, nanti ada hitungannya untuk default nilainya
+		working hours default 8-17
+		
+	Job Order tambahkan contract status:
+		pkwtt -> TNS mobile; Internship -> TNS / Samsung; PHL(Pegawai Harian Lepas) -> Caprock
+
+	lebaran bonus diganti pilihan yes/no
+	
+	All Data Update => project HCPT kolom OT, bisa muncul yes/no atau angka
+	
+	job order => approved dan checked di hidden ajah
+	
+
+ALL DATA UPDATE
+	kolom OT bisa yes/no ataupun menunjukkan angka
+	EDUCATIONAL BACKGROUND => semua harus muncul
+	notifikasi warning akan kirim email ke client dan user chr-dashboard
+		45 hari least day
+
+Auto send email jika ada perubahan pada kontrak
+
+upload bpjs ketenaga kerjaan		
+==========================================================================================================
+
+Booking facility, forward ke email
+
+FINANCE 
+	PPh23 bisa export
+		ada fitur upload dari pdf, kunciannya dari pdf adalah nama perusahaan dan nilai pph, maka dapat diambil tgl dan nomor bukti potong 
+		
+	NERACA
+		
+INDOTTECH
+	
+	XXX Invoice Coa Default Setting:
+		Dengan Reimbursment
+			Piutang Usaha (D)	=> (reimbursement + fee + vat)
+			Penjualan (K)		=> (reimbursement + fee)
+			Hutang PPN (K)		=> ((reimbursement + fee) * 10%)
+			
+			Piutang Gaji (D)			=> DIHAPUS
+			Piutang Usaha (D)			=> ((reimbursement + fee  + vat) - pph23)
+			Penjualan (K)				=> (reimbursement + fee)
+			Hutang PPN (K)				=> ((reimbursement + fee) * 10%)
+			dengan pph23: BDD PPh23(D)	=> ((reimbursement + fee) * 2%)
+		
+		Tanpa Reimbursment
+			Piutang Usaha (D)				=> (fee + vat)
+			Penjualan (K)					=> (fee)
+			Hutang PPN (K)					=> (fee * 10%)
+				
+			
+			Piutang Usaha (D)				=> (fee + vat - pph23)
+			Penjualan (K)					=> (fee)
+			Hutang PPN (K)					=> (fee * 10%)
+				dengan pph23: BDD PPh23(D)	=> (pph23)
+			
+		Reimbursment Saja
+			Piutang Gaji (D)				=> (reimbursement)
+			Penjualan (K)					=> (reimbursement)
+		
+		BDD => Biaya Dibayar Dimuka
+			
+	XXX Undefined Journals
+	
+	XXX Invoice paid journal
+		Reimbursment only
+			Bank (D)
+			Piutang Gaji (K)
+			
+		ada Fee
+			Bank (D)
+			Piutang Usaha (K)
+				PPh23 (D)
+		
+		noted : tidak bisa edit fee,reimbursement,is vat dan is tax23 jika sudah paid
+		
+	XXX Invoice payment tambah kolom titipan
+	
+	XXX generate create invoice journal & payment invoice journal
+	
+	XXX payment bulk dari halaman invoice list
+	
+	XXX invoice list tambahkan filter range invoice created_at
+		
+		
+Indottech:
+	colo application approve
+	
+	XXX prf add, h3i hanya melihat cost center h3i saja
+
+
+prf
+	XXX Mba erna ga bisa upload attachment
+	XXX superuser,mba ana dan finance bisa lihat semua prf
+	XXX accounting ganti Authorize
+	XXX listing wraping
+	XXX attachment bisa dilihat di chr_dashboards
+	XXX reject
+	XXX upload settlement
+	XXX upload proof of payment
+	XXX cost center
+	XXX filter by project,scope,region,cost center
+		XXX range tanggal
+	XXX export excell ==> ada total
+	XXX prf bu erna bisa pilih cost center
+	XXX prf yng dibuat oleh mba erna khusus perjalanan dinas, muncul ke indottech sesuai cost center
+	
+	XXX create user ada kolom forbidden_chr_dashboard
+	
+	XXX filter prf untuk chr dashboard disamakan
+	
+XXX BPJS Kesehatan:
+	XXX tambahin upload buat kartu bpjs, bisa di download di report_bpjs_kesehatan.php
+	
+====================================================================================================
+
+Indottech Dashboards		
+	Candidates
+		filter by position, aktif non aktif,current project
+
+ACCOUNTING
+	filter prf
+		paid,approved,dll
+
+	pph23 dan vat bisa search client, auto fill tgl bukti potong,nominal
+		cek email dari mba ari (Bentuk Report Sales Bulanan ke NSN dan ke managemant)
+			dan (Fwd: Format Invoice dan Master Report Sales 2016 dan 2017)		
+
+INVOICE:
+		truncate table po;truncate table po_detail;truncate table invoice;truncate table invoice_detail;
+	
+upload:
+	- commercial nsn (po & wcc) 
+	
+Payroll
+	Time sheet => untuk hitung lemburan => untuk tools calculator
+		FDR -> Rules ????
+		
+billing => data details???
+
+Purchasing Requisition 
+	di approve oleh GA, untuk di berikan HarSat
+	bisa create PRF, dengan lampiran detail barang
+
+
+Training
+	lihat email : "Kebutuhan Pengembangan Sistem CHR-Dashboards"
+	Blasting email wysiwyg editor
+	database email
+	jadwal training  (per tahun) => format dari mba winda
+		ada yg sesuai, yg ditunda, di cancel
+		pelaksana oleh indohr atau mitra
+		
+	budget dan realisasi training
+		fee pembicara, mitra
+		hotel
+		snack
+			=> profit
+
+	PRF {ada keterangan sudah dibayarkan} => tool untuk global
+	Pembayaran peserta => ada yg on the spot, ada yang transfer ke finance
+	
+	Flow training:
+		Blasting iklan
+			ada link isi form registrasi
+			ada pilihan harga earlybird dan normal/reguler
+			ada link google maps
+			yang mengisi form registrasi, maka akan menjadi prospek peserta
+		Blasting konfirmasi kehadiran peserta
+			ada link form konfirmasi kehadiran => untuk reguler
+			ada link form konfirmasi pembayaran => untuk earlybird
+				bukti transfer
+			input data untuk invoicing
+		Peserta prospek bisa ubah harga training
+	
+	Nomor Surat Generator
+
+bjps
+	Info Tunggakan
+
+Devira => GA & Admin
+
+group => bisa lebih detail menunya
+
+
+	data bakal upload:
+		PO 2016 & 2017
+		Invoice 2016 & 1017
+		Address All Client & npwp
+		Format Neraca, L/R => format Audit
+			Neraca Bahasa Inggris
+		Jurnal Harian
+		Budgeting All division
+		commercial nsn (po & wcc)
+		buku besar pembantu?????
+
+Upload document di buat general
+
+Taskbase ditambah menu:
+	BTR (Bussiness Trip)
+	Advance
+
+job order
+    tambahkan hint untuk penjelasannya
+    bisa output jadi kontrak
+    job order view di sesuaikan
+
+XXX according to file "Commercial Dashboard 31 July 2015 - 10 February 2017.xlsx"
+    Nomor PO dikolom = A
+    Decription di kolom = R
+    Nomor WCC di kolom= M
+    Nilai PO di kolom = B
+	
+payroll jurnal setting "lihat di foto DSC_3036.JPG & DSC_3037.JPG"
+
+jika ada candidate yg cut off jika di tengah bulan, misal tgl 14, maka jangan sampai gajinya full 1 bulan
+	dipagerin dari sistem agar jangan kebablasan, 
+	sebenarnya sudah ada end contract di awal job order
+
+all data update berdasarkan client,
+	kolom allowance akan muncul atau tidaknya sesuai client yg berkaitan memiliki kolom tersebut atau tidak?
+		fix allowance (setelah basic salary)
+		laptop allowance
+		broadband allowance
+		other allowance
+
+	kolom benefit ganti dengan medical plan
+
+	npwp di candidates di seragamkan formatnya + atas nama, karena istri bisa ikut npwp suaminya
+	 =>49.988.778.4.402.000 a.n Agung Permana
+
+	Join IndoHR At => Join IndoHR Start
+	birthplace => dari data candidate
+
+Candidates status berkaitan dengan family member
+	XXX sub windows bpjs ada kolom remarks, muncul di report
+
+
+REPORT
+	LK -> source dr jurnal
+	Sales -> dr invoice, generate per divisi
+	Outstanding Invoice => invoice yang belum di bayar / sama dengan due date
+	PO Onhand => Po yang belum di invoice
+
+
+
+INVOICE
+	report / divisi akan di munculkan IDR (lihat di dashboard)	
+	tapi bisa melihat USD nya
+	tanggal invoice adalah tanggal entry
+
+kurs info
+	kurs pajak
+	kurs BI
+	kurs actual
+	kurs jual
+
+=================================================================================
+
+
+All Data updates
+	kolom historical
+		perubahan gaji
+		perubahan posisi
+		perubahan benefit
+		
+Uploader COA
+
+report data asuransi
+
+PPh 23
+	ketika di entry akan mempengaruhi penyajian report (lihat: INVOICE_2016...xlsx, sheet :master, kolom AD dan AE)
+	
+Division 
+	IndoHR TaskBase
+	Indotech
+	CHR Training & Consultant
+	Jalurkerja.com
+
+Finance
+	Budgeting
+	Cost Realization
+		langsung sebagai cash out [pilih nama bank, COA, nominal, date]
+	Bank
+
+jo_order crud 
+	job order view ada tombol-tombol extension ke brapa dan amandemen ke brapa
+	
+	job order view 
+		menampilkan allowance dan benefit yang additional
+		Overtime ada tambah pilihan
+		status kontrak
+		akan menampilkan dengan endorsement yg terakhir	
+
+candidates
+	berikut ini apakah hanya sekali tambah di kolom candidate atau bisa berkali2 entry di child table candidate:
+		tambahkan kolom bpjs_registered_at,bpjs_send_at,bpjs_with_family (log book)
+	 	tambahkan kolom jamsostek_registered_at,jamsostek_send_at (log book)
+		tambahkan kolom insurance_registered_at,insurance_send_at,insurance_with_family (log book)
+	upload photo
+	view comprehensive resume
+	ketika di klik additional bpjs kesehatan, otomatis muncul sub windows dengan daftar family
+			jika family belom di isi, hanya muncul data dia sendiri
+	ketika di klik additional BPJS Ketenagakerjaan, akan muncul sub window yang hanya ada baris data dia sendiri
+	
+Notifikasi
+	=> 45 hari least day
+	=> insurance belum memiliki ID
+
+crud pkwt from all_data_update_edit.php,view,listfull
+curl AP PORTAL
+	https://apportal.nokia.com/APPortalExt/Login.aspx
+	https://apportal.nokia.com/APPortalExt/pos/
+	billings@corphr.com
+	bismillaahi123
+
+multi user privileges
+

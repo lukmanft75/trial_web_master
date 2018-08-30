@@ -1,0 +1,8 @@
+CPU : 2 Core 2.30GHz
+RAM : 4 Gb
+DISK : 100 Gb
+Operating System : Ubuntu Linux 16.04.2
+
+IP : 103.253.113.201
+User : corphr
+Pass : corphr11X
